@@ -1,0 +1,20 @@
+Description: fix crash on OOB reads in putcontig8bitYCbCr11tile
+ Fixed upstream in CVS version 1.63.2.5 of libtiff/tif_getimage.c
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/591605
+Bug-RedHat: https://bugzilla.redhat.com/show_bug.cgi?id=603081
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=595064
+Origin: https://bugzilla.redhat.com/attachment.cgi?id=423329
+
+Index: tiff-3.9.2/libtiff/tif_getimage.c
+===================================================================
+--- tiff-3.9.2.orig/libtiff/tif_getimage.c	2010-06-16 10:47:29.147649657 -0700
++++ tiff-3.9.2/libtiff/tif_getimage.c	2010-06-16 10:48:06.103986457 -0700
+@@ -2399,7 +2399,7 @@
+ 			}
+ 			break;
+ 		case PHOTOMETRIC_YCBCR:
+-			if (img->bitspersample == 8)
++			if ((img->bitspersample==8) && (img->samplesperpixel==3))
+ 			{
+ 				if (initYCbCrConversion(img)!=0)
+ 				{
