@@ -4,7 +4,7 @@ Group:          Productivity/Graphics/Convertors
 AutoReqProv:    on
 Url:            http://www.remotesensing.org/libtiff/
 Version:        4.0.2
-Release:	4
+Release:	5
 Summary:        Tools for Converting from and to the Tiff  Format
 Source:        %{name}-%{version}.tar.gz
 
