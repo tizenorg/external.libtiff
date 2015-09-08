@@ -43,14 +43,17 @@ EXTRA_DIST = \
 	SConstruct \
 	autogen.sh \
 	configure.com \
-	nmake.opt
+	nmake.opt \
+	libtiff-4.pc.in
 
 dist_doc_DATA = $(docfiles)
 
-SUBDIRS = port libtiff build contrib test man html
+SUBDIRS = port libtiff tools build contrib test man html
 
 release:
 	(rm -f $(top_srcdir)/RELEASE-DATE && echo $(LIBTIFF_RELEASE_DATE) > $(top_srcdir)/RELEASE-DATE)
 	(rm -f $(top_srcdir)/VERSION && echo $(LIBTIFF_VERSION) > $(top_srcdir)/VERSION)
 	(rm -f $(top_srcdir)/libtiff/tiffvers.h && sed 's,LIBTIFF_VERSION,$(LIBTIFF_VERSION),;s,LIBTIFF_RELEASE_DATE,$(LIBTIFF_RELEASE_DATE),' $(top_srcdir)/libtiff/tiffvers.h.in > $(top_srcdir)/libtiff/tiffvers.h)
 
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = libtiff-4.pc

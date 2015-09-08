@@ -1,3 +1,59 @@
+tiff (4.0.2-4) unstable; urgency=low
+
+  * Fix CVE-2012-4447 & CVE-2012-4564
+  * Git: external/libtiff
+  * Tag: tiff_4.0.2-4
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Fri, 25 Jan 2013 17:15:13 +0900
+
+tiff (4.0.2-3) unstable; urgency=low
+
+  * Uninstall /usr/bin/*
+  * Git: external/libtiff
+  * Tag: tiff_4.0.2-3
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Fri, 16 Nov 2012 17:46:50 +0900
+
+tiff (4.0.2-2) unstable; urgency=low
+
+  * fixes CVE-2012-3401
+  * Git: external/libtiff
+  * Tag: tiff_4.0.2-2
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Wed, 14 Nov 2012 18:32:45 +0900
+
+tiff (4.0.2-1) unstable; urgency=low
+
+  * Upgrade libtiff 4.0.2
+  * Git: external/libtiff
+  * Tag: tiff_4.0.2-1
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Tue, 06 Nov 2012 15:07:21 +0900
+
+tiff (3.9.4-8) unstable; urgency=low
+
+  * Update spec file for License
+  * Git: external/libtiff
+  * Tag: tiff_3.9.4-8
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Thu, 18 Oct 2012 13:25:25 +0900
+
+tiff (3.9.4-7) unstable; urgency=low
+
+  * License file copied to /usr/share/license/
+  * Git: external/libtiff
+  * Tag: tiff_3.9.4-7
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Fri, 12 Oct 2012 16:53:28 +0900
+
+tiff (3.9.4-6) unstable; urgency=low
+
+  * Add manifest file
+  * Git: external/libtiff
+  * Tag: tiff_3.9.4-6
+
+ -- YoungHun Kim <yh8004.kim@samsung.com>  Thu, 20 Sep 2012 21:41:28 +0900
+
 tiff (3.9.4-5+3slp2) unstable; urgency=low
 
   * Add libtiff.spec file

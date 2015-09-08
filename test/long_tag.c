@@ -1,4 +1,4 @@
-/* $Id: long_tag.c,v 1.3.2.1 2010-06-08 18:50:43 bfriesen Exp $ */
+/* $Id: long_tag.c,v 1.4 2008/03/28 01:42:06 bfriesen Exp $ */
 
 /*
  * Copyright (c) 2004, Andrey Kiselev  <dron@ak4719.spb.edu>
@@ -60,8 +60,10 @@ int
 main(int argc, char **argv)
 {
 	TIFF		*tif;
-	int		i;
+	unsigned int	i;
 	unsigned char	buf[3] = { 0, 127, 255 };
+        (void) argc;
+        (void) argv;
 
 	/* Test whether we can write tags. */
 	tif = TIFFOpen(filename, "w");
@@ -152,10 +154,3 @@ failure:
 }
 
 /* vim: set ts=8 sts=8 sw=8 noet: */
-/*
- * Local Variables:
- * mode: c
- * c-basic-offset: 8
- * fill-column: 78
- * End:
- */

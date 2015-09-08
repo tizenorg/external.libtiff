@@ -1,4 +1,4 @@
-/* $Id: fax2ps.c,v 1.22.2.1 2010-06-08 18:50:43 bfriesen Exp $" */
+/* $Id: fax2ps.c,v 1.27 2011-04-02 19:30:20 bfriesen Exp $" */
 
 /*
  * Copyright (c) 1991-1997 Sam Leffler
@@ -41,6 +41,10 @@
 
 #ifdef HAVE_IO_H
 # include <io.h>
+#endif
+
+#ifdef NEED_LIBPORT
+# include "libport.h"
 #endif
 
 #include "tiffio.h"
@@ -273,9 +277,9 @@ findPage(TIFF* tif, uint16 pageNumber)
     uint16 pn = (uint16) -1;
     uint16 ptotal = (uint16) -1;
     if (GetPageNumber(tif)) {
-	while (pn != pageNumber && TIFFReadDirectory(tif) && GetPageNumber(tif))
+	while (pn != (pageNumber-1) && TIFFReadDirectory(tif) && GetPageNumber(tif))
 	    ;
-	return (pn == pageNumber);
+	return (pn == (pageNumber-1));
     } else
 	return (TIFFSetDirectory(tif, (tdir_t)(pageNumber-1)));
 }
@@ -380,8 +384,7 @@ main(int argc, char** argv)
 
 	fd = tmpfile();
 	if (fd == NULL) {
-	    fprintf(stderr, "Could not create temporary file, exiting.\n");
-	    fclose(fd);
+	    fprintf(stderr, "Could not obtain temporary file.\n");
 	    exit(-2);
 	}
 #if defined(HAVE_SETMODE) && defined(O_BINARY)

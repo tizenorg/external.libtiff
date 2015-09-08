@@ -1,4 +1,4 @@
-/* $Id: pal2rgb.c,v 1.10.2.1 2010-06-08 18:50:44 bfriesen Exp $ */
+/* $Id: pal2rgb.c,v 1.13 2010-07-02 12:02:56 dron Exp $ */
 
 /*
  * Copyright (c) 1988-1997 Sam Leffler
@@ -33,6 +33,10 @@
 
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
+#endif
+
+#ifdef NEED_LIBPORT
+# include "libport.h"
 #endif
 
 #include "tiffio.h"
@@ -361,7 +365,7 @@ static struct cpTag {
     { TIFFTAG_DATETIME,			1, TIFF_ASCII },
     { TIFFTAG_ARTIST,			1, TIFF_ASCII },
     { TIFFTAG_HOSTCOMPUTER,		1, TIFF_ASCII },
-    { TIFFTAG_WHITEPOINT,		1, TIFF_RATIONAL },
+    { TIFFTAG_WHITEPOINT,		2, TIFF_RATIONAL },
     { TIFFTAG_PRIMARYCHROMATICITIES,	(uint16) -1,TIFF_RATIONAL },
     { TIFFTAG_HALFTONEHINTS,		2, TIFF_SHORT },
     { TIFFTAG_BADFAXLINES,		1, TIFF_LONG },

@@ -1,4 +1,4 @@
-/* $Id: bmp2tiff.c,v 1.20.2.1 2010-06-08 18:50:43 bfriesen Exp $
+/* $Id: bmp2tiff.c,v 1.23 2010-03-10 18:56:49 bfriesen Exp $
  *
  * Project:  libtiff tools
  * Purpose:  Convert Windows BMP files in TIFF.
@@ -50,6 +50,10 @@
 
 #if HAVE_IO_H
 # include <io.h>
+#endif
+
+#ifdef NEED_LIBPORT
+# include "libport.h"
 #endif
 
 #include "tiffio.h"
@@ -428,7 +432,7 @@ main(int argc, char* argv[])
 				read(fd, clr_tbl, n_clr_elems * clr_tbl_size);
 
 				red_tbl = (unsigned short*)
-					_TIFFmalloc(1<<depth * sizeof(unsigned short));
+					_TIFFmalloc(((tmsize_t)1)<<depth * sizeof(unsigned short));
 				if (!red_tbl) {
 					TIFFError(infilename,
 				"Can't allocate space for red component table");
@@ -436,7 +440,7 @@ main(int argc, char* argv[])
 					goto bad1;
 				}
 				green_tbl = (unsigned short*)
-					_TIFFmalloc(1<<depth * sizeof(unsigned short));
+					_TIFFmalloc(((tmsize_t)1)<<depth * sizeof(unsigned short));
 				if (!green_tbl) {
 					TIFFError(infilename,
 				"Can't allocate space for green component table");
@@ -444,7 +448,7 @@ main(int argc, char* argv[])
 					goto bad2;
 				}
 				blue_tbl = (unsigned short*)
-					_TIFFmalloc(1<<depth * sizeof(unsigned short));
+					_TIFFmalloc(((tmsize_t)1)<<depth * sizeof(unsigned short));
 				if (!blue_tbl) {
 					TIFFError(infilename,
 				"Can't allocate space for blue component table");
